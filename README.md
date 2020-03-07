@@ -68,10 +68,13 @@ source ~/.bashrc
 pyenv install 3.7.2
 pyenv global 3.7.2
 
+pip install torch
+pip install unityagents
+
 # install unity ml agents
-git clone --branch latest_release https://github.com/Unity-Technologies/ml-agents.git
-cd ml-agents/ml-agents/
-pip3 install -e .
+# git clone --branch latest_release https://github.com/Unity-Technologies/ml-agents.git
+# cd ml-agents/ml-agents/
+# pip3 install -e .
 ```
 
 Install xorg
@@ -151,4 +154,6 @@ git clone https://github.com/kelstopper/drl_navigation.git
 curl https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip > Banana_Linux_NoVis.zip
 
 unzip Banana_Linux_NoVis.zip
+
+
 ```

@@ -3,8 +3,8 @@ import random
 from collections import namedtuple, deque
 from enum import Enum
 
-from network.q_network import QNetwork
-from network.pixel_q_network import PixelQNetwork
+from models.q_network import QNetwork
+from models.pixel_q_network import PixelQNetwork
 
 import torch
 import torch.nn.functional as F

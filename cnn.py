@@ -1,7 +1,9 @@
+import torch
+from collections import deque
 from unityagents import UnityEnvironment
 import numpy as np
-import matplotlib.pyplot as plt
-%matplotlib inline
+# import matplotlib.pyplot as plt
+# %matplotlib inline
 
 env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86_64")
 
@@ -22,8 +24,8 @@ print('Number of actions:', action_size)
 # examine the state space 
 state = env_info.visual_observations[0]
 print('States look like:')
-plt.imshow(np.squeeze(state))
-plt.show()
+# plt.imshow(np.squeeze(state))
+# plt.show()
 state_size = state.shape
 print('States have shape:', state.shape)
 
@@ -31,11 +33,6 @@ from agent.dqn_agent import Agent, LearningMethod, NetworkType
 
 #initialize the agent
 agent = Agent(state_size=3, action_size=4, seed=0, network=NetworkType.PIXEL_Q_NETWORK)
-
-import torch
-from collections import deque
-import matplotlib.pyplot as plt
-%matplotlib inline
 
 def dqn(n_episodes=2000, max_t=3000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
     """Deep Q-Learning.
@@ -86,12 +83,12 @@ def dqn(n_episodes=2000, max_t=3000, eps_start=1.0, eps_end=0.01, eps_decay=0.99
 scores = dqn()
 
 # plot the scores
-fig = plt.figure()
-ax = fig.add_subplot(111)
-plt.plot(np.arange(len(scores)), scores)
-plt.ylabel('Score')
-plt.xlabel('Episode #')
-plt.show()
+# fig = plt.figure()
+# ax = fig.add_subplot(111)
+# plt.plot(np.arange(len(scores)), scores)
+# plt.ylabel('Score')
+# plt.xlabel('Episode #')
+# plt.show()
 
 # load the weights from file
 agent.qnetwork_local.load_state_dict(torch.load('checkpoint_CNN_DQN1.pth', map_location='cpu'))

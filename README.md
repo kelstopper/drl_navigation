@@ -142,3 +142,13 @@ glxgears
 # 141674 frames in 5.0 seconds = 28334.779 FPS
 # 141490 frames in 5.0 seconds = 28297.875 FPS
 ```
+
+```bash
+# clone environment from git
+git clone https://github.com/kelstopper/drl_navigation.git
+
+# copy headless linux app
+curl https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip > Banana_Linux_NoVis.zip
+
+unzip Banana_Linux_NoVis.zip
+```

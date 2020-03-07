@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib inline
 
-env = UnityEnvironment(file_name="VisualBanana.app")
+env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86_64")
 
 # get the default brain
 brain_name = env.brain_names[0]

@@ -19,21 +19,21 @@ class PixelQNetwork(nn.Module):
         self.seed = torch.manual_seed(seed)
 
         self.cnn = nn.Sequential(
-            nn.Conv2d(state_size, 4, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(state_size, 4, kernel_size=2),
             nn.ReLU(),
             nn.MaxPool2d(2),
-            nn.Conv2d(4, 8, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(4, 8, kernel_size=2),
             nn.ReLU(),
             nn.MaxPool2d(2),
-            nn.Conv2d(8, 16, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(8, 16, kernel_size=2),
             nn.ReLU(),
             nn.MaxPool2d(2)
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(1600, 1600),
-            nn.Linear(1600, 1600),
-            nn.Linear(1600, action_size),
+            nn.Linear(1296, 1296),
+            nn.Linear(1296, 648),
+            nn.Linear(648, action_size),
         )
 
     def forward(self, state):

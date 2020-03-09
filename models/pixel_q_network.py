@@ -31,9 +31,13 @@ class PixelQNetwork(nn.Module):
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(1296, 1296),
-            nn.Linear(1296, 1296),
-            nn.Linear(1296, action_size),
+            nn.Linear(1296, 648),
+            nn.ReLU(),
+            nn.Linear(648, 324),
+            nn.ReLU(),
+            nn.Linear(324, 162),
+            nn.ReLU(),
+            nn.Linear(162, action_size)
         )
 
     def forward(self, state):

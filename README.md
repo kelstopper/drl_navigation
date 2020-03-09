@@ -8,7 +8,11 @@ Update README
 
 #### Step 1: Choose AMI
 
-Create a new instance in the EC2 panel and search for the AMI "Deep Learning AMI (Ubuntu 16.04)"
+Create a new instance in the EC2 panel and search for the AMI `ami-016ff5559334f8619` it can be found in region `us-east-1`
+
+OR
+
+Follow the build instruction here: [Training on Amazon Web Service](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)
 
 Select continue
 
@@ -46,80 +50,6 @@ chmod 600 ~/.ssh/p2-xlarge-drl.pem
 ssh -i ~/.ssh/p2-xlarge-drl.pem ubuntu@{hostname found in ec2 dashboard}
 ```
 
-Install dependencies in the environment
-
-```bash
-# install compatible python
-curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-
-## apt dependencies
-sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
-
-## edit ~/.bashrc and add the following lines
-echo "export PATH=\"/home/ubuntu/.pyenv/bin:$PATH\"" >> ~/.bashrc
-## reload env
-source ~/.bashrc
-echo "$(pyenv init -)" >> ~/.bashrc
-echo "$(pyenv virtualenv-init -)" >> ~/.bashrc
-## reload env
-source ~/.bashrc
-
-## install python 3.5.9
-pyenv install 3.7.2
-pyenv global 3.7.2
-
-pip install torch
-pip install unityagents
-
-# install unity ml agents
-# git clone --branch latest_release https://github.com/Unity-Technologies/ml-agents.git
-# cd ml-agents/ml-agents/
-# pip3 install -e .
-```
-
-Install xorg
-```bash
-# Install Xorg
-sudo apt-get update
-sudo apt-get install -y xserver-xorg mesa-utils
-sudo nvidia-xconfig -a --use-display-device=None --virtual=1280x1024
-
-# Get the BusID information
-nvidia-xconfig --query-gpu-info
-
-# Add the BusID information to your /etc/X11/xorg.conf file
-sudo sed -i 's/    BoardName      "Tesla K80"/    BoardName      "Tesla K80"\n    BusID          "0:30:0"/g' /etc/X11/xorg.conf
-
-# Remove the Section "Files" from the /etc/X11/xorg.conf file
-# And remove two lines that contain Section "Files" and EndSection
-sudo vim /etc/X11/xorg.conf
-```
-
-Update the NVIDIA driver
-```bash
-# Download and install the latest Nvidia driver for ubuntu
-# Please refer to http://download.nvidia.com/XFree86/Linux-#x86_64/latest.txt
-$ wget http://download.nvidia.com/XFree86/Linux-x86_64/390.87/NVIDIA-Linux-x86_64-390.87.run
-$ sudo /bin/bash ./NVIDIA-Linux-x86_64-390.67.run --accept-license --no-questions --ui=none
-
-# Disable Nouveau as it will clash with the Nvidia driver
-sudo echo 'blacklist nouveau'  | sudo tee -a /etc/modprobe.d/blacklist.conf
-sudo echo 'options nouveau modeset=0'  | sudo tee -a /etc/modprobe.d/blacklist.conf
-sudo echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
-sudo update-initramfs -u
-```
-
-Restart EC2
-```bash
-sudo reboot now
-```
-
-Ensure no Xorg processes are running
-```bash
-sudo killall Xorg
-nvidia-smi
-```
-
 Start x server and use it
 ```bash
 # Start the X Server, press Enter to come back to the command line
@@ -151,9 +81,17 @@ glxgears
 git clone https://github.com/kelstopper/drl_navigation.git
 
 # copy headless linux app
-curl https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip > Banana_Linux_NoVis.zip
+curl https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/VisualBanana_Linux.zip > VisualBanana_Linux.zip
 
-unzip Banana_Linux_NoVis.zip
+unzip VisualBanana_Linux.zip
 
+#install cuda
+conda install pytorch torchvision cuda80 -c soumith
 
+# pytorch is missing
+pip install torch
+
+# run the cnn example, verify that it is running on CUDA in the logs
+## "Training on CUDA" <<< Should be present if "Training on CPU" is present you are training on cpu and it WILL take longer and cost more
+python cnn.py
 ```

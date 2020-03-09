@@ -31,18 +31,25 @@ print('States have shape:', state.shape)
 
 from agent.dqn_agent import Agent, LearningMethod, NetworkType
 
+BUFFER_SIZE = int(1e6)  # replay buffer size
+BATCH_SIZE = 128         # minibatch size
+GAMMA = 0.99            # discount factor
+TAU = 1e-4              # for soft update of target parameters
+LR = 5e-4               # learning rate 
+UPDATE_EVERY = 10        # how often to update the network
+
 #initialize the agent
 agent = Agent(
     state_size=3,
     action_size=4,
     seed=0,
     network=NetworkType.PIXEL_Q_NETWORK,
-    buffer_size=int(1e6),
-    batch_size=128,
-    gamma=0.99,
-    tau=1e-4,
-    lr=5e-4,
-    update_every=10
+    buffer_size=BUFFER_SIZE,
+    batch_size=BATCH_SIZE,
+    gamma=GAMMA,
+    tau=TAU,
+    lr=LR,
+    update_every=UPDATE_EVERY
 )
 
 def dqn(n_episodes=2000, max_t=3000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):

@@ -25,15 +25,15 @@ class PixelQNetwork(nn.Module):
             nn.Conv2d(4, 8, kernel_size=2),
             nn.ReLU(),
             nn.MaxPool2d(2),
-            # nn.Conv2d(8, 16, kernel_size=2),
-            # nn.ReLU(),
-            # nn.MaxPool2d(2)
+            nn.Conv2d(8, 16, kernel_size=2),
+            nn.ReLU(),
+            nn.MaxPool2d(2)
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(3200, 3200),
-            nn.Linear(3200, 1600),
-            nn.Linear(1600, action_size),
+            nn.Linear(1296, 1296),
+            nn.Linear(1296, 1296),
+            nn.Linear(1296, action_size),
         )
 
     def forward(self, state):

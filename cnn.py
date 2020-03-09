@@ -2,6 +2,7 @@ import torch
 from collections import deque
 from unityagents import UnityEnvironment
 import numpy as np
+from agent.dqn_agent import Agent, LearningMethod, NetworkType
 # import matplotlib.pyplot as plt
 # %matplotlib inline
 
@@ -29,8 +30,6 @@ print('States look like:')
 state_size = state.shape
 print('States have shape:', state.shape)
 
-from agent.dqn_agent import Agent, LearningMethod, NetworkType
-
 BUFFER_SIZE = int(1e7)  # replay buffer size
 BATCH_SIZE = 64         # minibatch size
 GAMMA = 0.99            # discount factor
@@ -43,6 +42,7 @@ agent = Agent(
     state_size=3,
     action_size=4,
     seed=0,
+    learning_method=LearningMethod.DOUBLE_DQN,
     network=NetworkType.PIXEL_Q_NETWORK,
     buffer_size=BUFFER_SIZE,
     batch_size=BATCH_SIZE,

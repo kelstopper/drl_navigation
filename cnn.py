@@ -32,7 +32,18 @@ print('States have shape:', state.shape)
 from agent.dqn_agent import Agent, LearningMethod, NetworkType
 
 #initialize the agent
-agent = Agent(state_size=3, action_size=4, seed=0, network=NetworkType.PIXEL_Q_NETWORK)
+agent = Agent(
+    state_size=3,
+    action_size=4,
+    seed=0,
+    network=NetworkType.PIXEL_Q_NETWORK,
+    buffer_size=int(1e6),
+    batch_size=128,
+    gamma=0.99,
+    tau=1e-4,
+    lr=5e-4,
+    update_every=10
+)
 
 def dqn(n_episodes=2000, max_t=3000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
     """Deep Q-Learning.

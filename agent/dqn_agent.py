@@ -61,11 +61,11 @@ class Agent():
         self.seed = random.seed(seed)
         self.learning_method = learning_method
         self.network = network
-        self.buffer_size = buffer_size,
-        self.batch_size = batch_size,
-        self.gamma = gamma,
-        self.tau = tau,
-        self.lr = lr,
+        self.buffer_size = buffer_size
+        self.batch_size = batch_size
+        self.gamma = gamma
+        self.tau = tau
+        self.lr = lr
         self.update_every = update_every
 
         # Q-Network

@@ -78,18 +78,15 @@ glxgears
 
 ```bash
 # clone environment from git
-git clone https://github.com/kelstopper/drl_navigation.git
+git clone https://github.com/kelstopper/drl_navigation.git && cd drl_navigation
 
 # copy headless linux app
 curl https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/VisualBanana_Linux.zip > VisualBanana_Linux.zip
-
 unzip VisualBanana_Linux.zip
 
-#install cuda
-conda install pytorch torchvision cuda80 -c soumith
-
-# pytorch is missing
-pip install torch
+# use the pytorch env
+source activate pytorch_p36
+pip install unityagents
 
 # run the cnn example, verify that it is running on CUDA in the logs
 ## "Training on CUDA" <<< Should be present if "Training on CPU" is present you are training on cpu and it WILL take longer and cost more

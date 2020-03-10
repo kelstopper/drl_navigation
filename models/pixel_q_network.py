@@ -38,16 +38,16 @@ class PixelQNetwork(nn.Module):
         self.fc = nn.Sequential(
             # nn.Linear(1344, 1344),
             # nn.ReLU(),
-            nn.Linear(336, 336),
+            nn.Linear(9, 9),
             nn.ReLU(),
-            nn.Linear(336, 168),
+            nn.Linear(9, 9),
             nn.ReLU(),
-            nn.Linear(168, action_size)
+            nn.Linear(9, action_size)
         )
 
     def forward(self, state):
         """Build a network that maps state -> action values."""
         x = self.cnn(state)
-        x = x.view(x.size(0), -1)
+        # x = x.view(x.size(0), -1)
         x = self.fc(x)
         return x

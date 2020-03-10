@@ -1,4 +1,4 @@
-# Deep Reinforcemeet Learning - Mr Banana Grabber
+# Deep Reinforcement Learning - Mr Banana Grabber
 
 ## Introduction
 

@@ -4,6 +4,8 @@
 
 This is a project in the Udacity Deep Reinforcement Learning Program
 
+![Screen grab in action](images/bananas.gif "GIF Recording")
+
 ---
 
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  The goal of the agent is to collect as many yellow bananas as possible while avoiding blue bananas.

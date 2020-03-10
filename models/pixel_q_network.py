@@ -27,22 +27,22 @@ class PixelQNetwork(nn.Module):
             nn.Conv2d(168, 336, kernel_size=3, stride=2),
             nn.BatchNorm2d(336),
             nn.LeakyReLU(0.02),
-            nn.Conv2d(336, 672, kernel_size=3, stride=2),
-            nn.BatchNorm2d(672),
-            nn.LeakyReLU(0.02),
-            nn.Conv2d(672, 1344, kernel_size=3, stride=2),
-            nn.BatchNorm2d(1344),
-            nn.LeakyReLU(0.02),
+            # nn.Conv2d(336, 672, kernel_size=3, stride=2),
+            # nn.BatchNorm2d(672),
+            # nn.LeakyReLU(0.02),
+            # nn.Conv2d(672, 1344, kernel_size=3, stride=2),
+            # nn.BatchNorm2d(1344),
+            # nn.LeakyReLU(0.02),
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(1344, 1344),
+            # nn.Linear(1344, 1344),
+            # nn.ReLU(),
+            nn.Linear(336, 336),
             nn.ReLU(),
-            nn.Linear(1344, 672),
+            nn.Linear(336, 168),
             nn.ReLU(),
-            nn.Linear(672, 336),
-            nn.ReLU(),
-            nn.Linear(336, action_size)
+            nn.Linear(168, action_size)
         )
 
     def forward(self, state):

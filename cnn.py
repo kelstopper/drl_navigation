@@ -30,8 +30,8 @@ print('States look like:')
 state_size = state.shape
 print('States have shape:', state.shape)
 
-BUFFER_SIZE = int(1e8)  # replay buffer size
-BATCH_SIZE = 64         # minibatch size
+BUFFER_SIZE = int(1e9)  # replay buffer size
+BATCH_SIZE = 32         # minibatch size
 GAMMA = 0.99            # discount factor
 TAU = 1e-3              # for soft update of target parameters
 LR = 5e-4               # learning rate 

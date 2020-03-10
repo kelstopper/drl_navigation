@@ -12,6 +12,16 @@ This DQN followed the pretty typical dqn used in examples through out the projec
 
 The network consisted of 3 fully connected layers, the first two were then passed through a ReLU function.
 
+The hyperparameters are listed below with a description. The biggest impact to the training on BOTH of the networds was to change the eps_decay. Being a little further from 1 @ 0.95 where starting with 0.995 had significant impact as the network got greedier faster.
+
+the buffer size being at 100000 seemed to be sufficient for this network. We are less likely to sample the same values especially with a batch size of 64, and we didn't need to be much larger.
+
+leaving the gamma at a near one value meant we were after immediate rewards, when trying to reduce the amout of episodes to get to a certain reward point this seemed necessary.
+
+The low tau shifts the prediction models to the target models more gradually
+
+The learning rate I left the same as in the previous examples and is similar to previous work. Changes to the learning rate could still improve the efficiency but it is already pretty quick.
+
 Hyperparameters:
 ```python
 * BUFFER_SIZE = int(1e5)  # replay buffer size
@@ -61,6 +71,8 @@ DQN:
 
 DDQN:
 ![DQN Report 429 Episodes](images/DDQN.png "DDQN Report")
+
+To look at the complete report see [Navigation.html](Navigation.html)
 
 ## Future improvements or research areas
 

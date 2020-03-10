@@ -31,11 +31,11 @@ state_size = state.shape
 print('States have shape:', state.shape)
 
 BUFFER_SIZE = int(1e9)  # replay buffer size
-BATCH_SIZE = 32         # minibatch size
+BATCH_SIZE = 128        # minibatch size
 GAMMA = 0.99            # discount factor
 TAU = 1e-3              # for soft update of target parameters
 LR = 5e-4               # learning rate 
-UPDATE_EVERY = 4        # how often to update the network
+UPDATE_EVERY = 2        # how often to update the network
 
 #initialize the agent
 agent = Agent(

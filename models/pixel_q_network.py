@@ -27,9 +27,9 @@ class PixelQNetwork(nn.Module):
             nn.Conv2d(168, 336, kernel_size=3, stride=2),
             nn.BatchNorm2d(336),
             nn.LeakyReLU(0.02),
-            # nn.Conv2d(336, 672, kernel_size=3, stride=2),
-            # nn.BatchNorm2d(672),
-            # nn.LeakyReLU(0.02),
+            nn.Conv2d(336, 672, kernel_size=3, stride=2),
+            nn.BatchNorm2d(672),
+            nn.LeakyReLU(0.02),
             # nn.Conv2d(672, 1344, kernel_size=3, stride=2),
             # nn.BatchNorm2d(1344),
             # nn.LeakyReLU(0.02),
@@ -38,16 +38,18 @@ class PixelQNetwork(nn.Module):
         self.fc = nn.Sequential(
             # nn.Linear(1344, 1344),
             # nn.ReLU(),
-            nn.Linear(9, 9),
+            nn.Linear(10752, 2688),
             nn.ReLU(),
-            nn.Linear(9, 9),
+            nn.Linear(2688, 672),
             nn.ReLU(),
-            nn.Linear(9, action_size)
+            nn.Linear(672, 168),
+            nn.ReLU(),
+            nn.Linear(168, action_size)
         )
 
     def forward(self, state):
         """Build a network that maps state -> action values."""
         x = self.cnn(state)
-        # x = x.view(x.size(0), -1)
+        x = x.view(x.size(0), -1)
         x = self.fc(x)
         return x

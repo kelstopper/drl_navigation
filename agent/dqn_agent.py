@@ -135,6 +135,10 @@ class Agent():
 
         loss = None
 
+        if train_on_gpu:
+            states = states.cuda()
+            next_states = next_states.cuda()
+
         ## TODO: compute and minimize the loss
         if self.learning_method == LearningMethod.DQN:
             # Get max predicted Q values (for next states) from target model

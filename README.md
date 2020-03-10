@@ -1,20 +1,77 @@
-# TODO
+# Deep Reinforcemeet Learning - Mr Banana Grabber
 
-### Introduction
+## Introduction
 
-Update README
+This is a project in the Udacity Deep Reinforcement Learning Program
 
-### CNN Q Network on AWS Deep Learning AMI (Ubuntu 16.04)
+---
 
-#### Step 1: Choose AMI
+A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  The goal of the agent is to collect as many yellow bananas as possible while avoiding blue bananas.
+
+The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction.  Given this information, the agent has to learn how to best select actions.  Four discrete actions are available, corresponding to:
+- **`0`** - move forward.
+- **`1`** - move backward.
+- **`2`** - turn left.
+- **`3`** - turn right.
+
+The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
+
+---
+
+## Getting Started
+
+Create the environment
+```bash
+conda create --name drlnd python=3.6
+source activate drlnd
+```
+Follow the instructions in this [repository](https://github.com/openai/gym) to perform a minimal install of OpenAI gym.
+
+* Next, install the classic control environment group by following the instructions [here](https://github.com/openai/gym#classic-control).
+* Then, install the box2d environment group by following the instructions [here](https://github.com/openai/gym#box2d).
+
+Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the drlnd environment.
+```bash
+python -m ipykernel install --user --name drlnd --display-name "drlnd"
+```
+
+Start jupeter-notebooks and set the kernel
+```bash
+jupyter-notebook
+```
+
+![Select Kernel -> Change Kernel -> drlnd](images/select_kernel.png "Select Kernel")
+
+You should now be able to proceed with running/training your own version.
+
+Follow the instructions in the notebook - most notably where to download the appropriate version of the banana application (this was done on OSX)
+
+Step #3 has been disabled for you, if you want to see and untrained version you may enable it.
+
+If running into any issues restart the kernel and begin running the notebook cells again.
+
+If you just want to see the trained models run, they have been provided to you in the `trained_models` folder. Simply run the one of your choosing.
+
+---
+
+## CNN Q Network on AWS Deep Learning AMI (Ubuntu 16.04)
+
+Note:
+===
+
+When using this environment it will cost money! Make sure to shut down and terminate the environment you create. Secondly, it will train, but it will take a long time. There are likely some improvements that can be made but in its current state it will use a lot of GPU time. To see an example of this project that can be run on CPU use the above DQN or Double DQN
+
+---
+
+### Step 1: Choose AMI
 
 Create a new instance in the EC2 panel and search for the AMI `ami-016ff5559334f8619` it can be found in region `us-east-1`
 
-OR
+Select continue
+
+##### OR
 
 Follow the build instruction here: [Training on Amazon Web Service](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)
-
-Select continue
 
 #### Step 2: Choose instance type
 
@@ -22,11 +79,11 @@ Select Family: `GPU Instances` Type: `p2.xlarge`
 
 #### Step 3: Configure Instance
 
-leave alone
+next
 
 #### Step 4: Add Storage
 
-leave alone
+next
 
 #### Step 5: Add Tags
 
@@ -40,7 +97,7 @@ allow ssh connections (default) - create new security group
 
 create new keypair and download
 
-when the instance is running connect to it using the pem file previously downloaded
+when the instance is running connect to it using the pem file previously downloaded in `Step 6`
 
 ```bash
 # change permissions on pem file

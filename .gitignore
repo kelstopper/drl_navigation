@@ -1,1 +1,6 @@
 __pycache__
+/*.pth
+.ipynb_checkpoints/
+.DS_Store
+*.app
+app/unity-environment.log

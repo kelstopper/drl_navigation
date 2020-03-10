@@ -3,8 +3,6 @@ from collections import deque
 from unityagents import UnityEnvironment
 import numpy as np
 from agent.dqn_agent import Agent, LearningMethod, NetworkType
-# import matplotlib.pyplot as plt
-# %matplotlib inline
 
 env = UnityEnvironment(file_name="VisualBanana_Linux/Banana.x86_64")
 

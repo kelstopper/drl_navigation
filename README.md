@@ -42,6 +42,14 @@ jupyter-notebook
 
 ![Select Kernel -> Change Kernel -> drlnd](images/select_kernel.png "Select Kernel")
 
+You will need to download the unity environment and possibly make changes in the python code in cell #2 to that loads the unity environment.
+
+Downloads are:
+* Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
+* Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
+* Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
+* Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
+
 You should now be able to proceed with running/training your own version.
 
 Follow the instructions in the notebook - most notably where to download the appropriate version of the banana application (this was done on OSX)
@@ -60,6 +68,8 @@ Note:
 ===
 
 When using this environment it will cost money! Make sure to shut down and terminate the environment you create. Secondly, it will train, but it will take a long time. There are likely some improvements that can be made but in its current state it will use a lot of GPU time. To see an example of this project that can be run on CPU use the above DQN or Double DQN
+
+You don't need to use the NoVis Environment for this. The below instructions setup a virtual screen that will render and return the visuals.
 
 You should also be able to run this network locally by executing the command
 

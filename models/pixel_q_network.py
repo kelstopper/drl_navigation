@@ -19,15 +19,15 @@ class PixelQNetwork(nn.Module):
         self.seed = torch.manual_seed(seed)
 
         self.cnn = nn.Sequential(
-            nn.Conv2d(3, 84, kernel_size=3, stride=2),
+            nn.Conv2d(3, 84, kernel_size=3, stride=3),
             nn.LeakyReLU(0.02),
-            nn.Conv2d(84, 168, kernel_size=3, stride=2),
+            nn.Conv2d(84, 168, kernel_size=3, stride=3),
             nn.BatchNorm2d(168),
             nn.LeakyReLU(0.02),
-            nn.Conv2d(168, 336, kernel_size=3, stride=2),
+            nn.Conv2d(168, 336, kernel_size=3, stride=3),
             nn.BatchNorm2d(336),
             nn.LeakyReLU(0.02),
-            nn.Conv2d(336, 672, kernel_size=3, stride=2),
+            nn.Conv2d(336, 672, kernel_size=3, stride=3),
             nn.BatchNorm2d(672),
             nn.LeakyReLU(0.02),
             # nn.Conv2d(672, 1344, kernel_size=3, stride=2),
@@ -38,9 +38,7 @@ class PixelQNetwork(nn.Module):
         self.fc = nn.Sequential(
             # nn.Linear(1344, 1344),
             # nn.ReLU(),
-            nn.Linear(10752, 2688),
-            nn.ReLU(),
-            nn.Linear(2688, 672),
+            nn.Linear(672, 672),
             nn.ReLU(),
             nn.Linear(672, 168),
             nn.ReLU(),

@@ -61,6 +61,12 @@ Note:
 
 When using this environment it will cost money! Make sure to shut down and terminate the environment you create. Secondly, it will train, but it will take a long time. There are likely some improvements that can be made but in its current state it will use a lot of GPU time. To see an example of this project that can be run on CPU use the above DQN or Double DQN
 
+You should also be able to run this network locally by executing the command
+
+```bash
+python cnn.py
+```
+
 ---
 
 ### Step 1: Choose AMI

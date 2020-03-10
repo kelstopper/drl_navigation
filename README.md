@@ -56,7 +56,7 @@ You should now be able to proceed with running/training your own version.
 
 Follow the instructions in the notebook - most notably where to download the appropriate version of the banana application (this was done on OSX)
 
-Step #3 has been disabled for you, if you want to see and untrained version you may enable it.
+Step #3 has been disabled for you, if you want to see an untrained version you may enable it.
 
 If running into any issues restart the kernel and begin running the notebook cells again.
 

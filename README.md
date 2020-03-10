@@ -92,3 +92,8 @@ pip install unityagents
 ## "Training on CUDA" <<< Should be present if "Training on CPU" is present you are training on cpu and it WILL take longer and cost more
 python cnn.py
 ```
+
+Shutdown xorg?
+```bash
+sudo killall Xorg
+```

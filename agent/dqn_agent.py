@@ -17,11 +17,13 @@ TAU = 1e-3              # for soft update of target parameters
 LR = 5e-4               # learning rate 
 UPDATE_EVERY = 4        # how often to update the network
 
-if torch.cuda.is_available():
+train_on_gpu = torch.cuda.is_available()
+if train_on_gpu:
     print("Training on CUDA")
 else:
     print("Training on CPU")
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+device = torch.device("cuda:0" if train_on_gpu else "cpu")
 
 class LearningMethod(Enum):
     DQN = 1
@@ -109,7 +111,10 @@ class Agent():
 
         self.qnetwork_local.eval()
         with torch.no_grad():
-            action_values = self.qnetwork_local(state)
+            if train_on_gpu:
+                action_values = self.qnetwork_local(state.cuda())
+            else:
+                action_values = self.qnetwork_local(state)
         self.qnetwork_local.train()
 
         # Epsilon-greedy action selection
